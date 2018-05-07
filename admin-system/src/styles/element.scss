@@ -6,3 +6,20 @@
   line-height: 45px;
   margin-bottom: 15px;
 }
+
+// .roleList {
+//   .el-table__expanded-cell[class*=cell]{
+//     padding: 0 !important;
+//   }
+// }
+th {
+  .cell {
+    color: black;
+    font-weight: bold;
+  }
+}
+td {
+  .cell {
+    color: black;
+  }
+}
