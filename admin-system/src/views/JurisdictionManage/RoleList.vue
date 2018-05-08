@@ -6,7 +6,7 @@
   <el-breadcrumb separator="/">
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item><a href="javascript:;">权限管理</a></el-breadcrumb-item>
-    <el-breadcrumb-item :to="{ path: '/roleList' }">角色列表</el-breadcrumb-item>
+    <el-breadcrumb-item>角色列表</el-breadcrumb-item>
   </el-breadcrumb>
   </el-col>
 </el-row>
@@ -69,27 +69,27 @@
 
   <!-- 角色授权对话框 -->
 <el-dialog title="角色授权" :visible.sync="roleDialogTableVisible">
-  <el-tree
-    :data="initRoleList"
-    show-checkbox
-    node-key="id"
-    ref="tree"
-    :default-expand-all='true'
-    :default-expanded-keys="[1, 2, 3]"
-    :default-checked-keys="currentCkeckedArr"
-    :props="defaultProps">
-  </el-tree>
-  <div slot="footer" class="dialog-footer">
-    <el-button @click="roleDialogTableVisible = false">取 消</el-button>
-    <el-button type="primary" @click="roleSubmit">确 定</el-button>
-  </div>
+<el-tree
+:data="initRoleList"
+show-checkbox
+node-key="id"
+ref="tree"
+:default-expand-all='true'
+:default-expanded-keys="[1, 2, 3]"
+:default-checked-keys="currentCkeckedArr"
+:props="defaultProps">
+</el-tree>
+<div slot="footer" class="dialog-footer">
+<el-button @click="roleDialogTableVisible = false">取 消</el-button>
+<el-button type="primary" @click="roleSubmit">确 定</el-button>
+</div>
 </el-dialog>
 
 </div>
 </template>
 
 <script>
-import {roleList, deleteRole, jurisdictionList, submitRole} from '@/api'
+import { roleList, deleteRole, jurisdictionList, submitRole } from '@/api'
 export default {
   data () {
     return {
@@ -125,13 +125,21 @@ export default {
     delAssignRole (row, rightId) {
       deleteRole(row.id, rightId).then(result => {
         if (result.meta.status === 200) {
-          this.$message({message: result.meta.msg, type: 'success', duration: 500})
+          this.$message({
+            message: result.meta.msg,
+            type: 'success',
+            duration: 500
+          })
           // 清空原来的数据
           row.children.splice(0, row.children.length)
           // 添加新的数据
           row.children.push(...result.data)
         } else {
-          this.$message({message: result.meta.msg, type: 'error', duration: 500})
+          this.$message({
+            message: result.meta.msg,
+            type: 'error',
+            duration: 500
+          })
         }
       })
     },
@@ -165,7 +173,9 @@ export default {
     roleSubmit () {
       var ckeckedArr = this.$refs.tree.getCheckedNodes() // 得到里面选中的id 集合
       // 返回一个新数组 有多个数组
-      var tempArrs = ckeckedArr.map((item) => { return item.id + ',' + item.pid })
+      var tempArrs = ckeckedArr.map(item => {
+        return item.id + ',' + item.pid
+      })
       // 结果 ["116,104,101", "117,104,101", "150,104,101"]
       // 通过 join ',' 分割成字符串
       var tempStr = tempArrs.join(',') // 结果 116,104,101,117,104,101,150,104,101
@@ -178,9 +188,13 @@ export default {
         if (result.meta.status === 200) {
           this.roleDialogTableVisible = false
           this.initTableData()
-          this.$message({message: result.meta.msg, type: 'success', duration: 1000})
+          this.$message({
+            message: result.meta.msg,
+            type: 'success',
+            duration: 1000
+          })
         } else {
-          this.$message({message: '更新失败', type: 'error', duration: 1000})
+          this.$message({ message: '更新失败', type: 'error', duration: 1000 })
         }
       })
     },
@@ -195,19 +209,19 @@ export default {
 }
 </script>
 <style>
-  .el-tag  {
-    margin-left: 5px;
-  }
-  .authlist {
-    border-top: solid 1px #D3DCE6;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  .arrow {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  .el-table__expanded-cell[class*=cell]{
-    padding: 0 !important;
-  }
+.el-tag {
+  margin-left: 5px;
+}
+.authlist {
+  border-top: solid 1px #d3dce6;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.arrow {
+  font-size: 18px;
+  font-weight: bold;
+}
+.el-table__expanded-cell[class*="cell"] {
+  padding: 0 !important;
+}
 </style>

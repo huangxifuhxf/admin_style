@@ -7,8 +7,11 @@
   <el-breadcrumb-item>添加商品</el-breadcrumb-item>
 </el-breadcrumb>
 
+<el-row class="colHeader">
+  <el-col :span="24"><div class="grid-content bg-purple-dark">添加商品信息</div></el-col>
+</el-row>
 <!-- 步骤条 -->
-<el-steps :active="active" finish-status="success">
+<el-steps :active="active" finish-status="success" class="mt-15 pl-20">
   <el-step title="步骤 1"></el-step>
   <el-step title="步骤 2"></el-step>
   <el-step title="步骤 3"></el-step>
@@ -117,7 +120,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .add-goods {
   .el-tabs {
     height: 400px;
@@ -128,5 +131,9 @@ export default {
   .ql-container {
     height: 300px;
   }
+}
+.colHeader {
+  padding: 12px;
+  background-color: #d7e2ef;
 }
 </style>

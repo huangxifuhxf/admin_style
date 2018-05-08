@@ -82,7 +82,7 @@
 </div>
 </template>
 <script>
-import {initListData} from '@/api'
+import { initListData } from '@/api'
 export default {
   data () {
     return {
@@ -121,12 +121,13 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.pageBox{
+<style lang="scss">
+.pageBox {
   padding: 5px 5px;
   background-color: #f5f5f5;
 }
-.US-search{
+.US-search {
   width: 300px;
 }
+
 </style>
