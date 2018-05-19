@@ -63,7 +63,7 @@
 
 <script>
 import TreeGrid from '@/components/TreeGrid/TreeGrid.vue'
-import {getCategoryList, getCategoryData, addCategoryData} from '@/api'
+import { getCategoryList, getCategoryData, addCategoryData } from '@/api'
 export default {
   // 挂载应用这个TreeGrid 子组件
   components: {
@@ -86,23 +86,25 @@ export default {
         cat_pid: 0
       },
       addRules: {
-        cat_name: [
-          { required: true, message: '请输入分类名', trigger: 'blur' }
-        ]
+        cat_name: [{ required: true, message: '请输入分类名', trigger: 'blur' }]
       },
-      columns: [{
-        text: '分类名称',
-        dataIndex: 'cat_name',
-        width: '300'
-      }, {
-        text: '是否有效',
-        dataIndex: 'cat_deleted',
-        width: '200'
-      }, {
-        text: '排序',
-        dataIndex: 'cat_level',
-        width: '200'
-      }],
+      columns: [
+        {
+          text: '分类名称',
+          dataIndex: 'cat_name',
+          width: '300'
+        },
+        {
+          text: '是否有效',
+          dataIndex: 'cat_deleted',
+          width: '200'
+        },
+        {
+          text: '排序',
+          dataIndex: 'cat_level',
+          width: '200'
+        }
+      ],
       // 匹配字段
       defaultProps: {
         children: 'children',
@@ -173,9 +175,17 @@ export default {
               this.addClassifyDialogFormVisible = false
               this.initTableData()
               this.addClassifyForm.cat_name = ''
-              this.$message({message: result.meta.msg, type: 'success', duration: 800})
+              this.$message({
+                message: result.meta.msg,
+                type: 'success',
+                duration: 800
+              })
             } else {
-              this.$message({message: result.meta.msg, type: 'error', duration: 800})
+              this.$message({
+                message: result.meta.msg,
+                type: 'error',
+                duration: 800
+              })
             }
           })
         } else {
@@ -188,11 +198,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pageBox{
+.pageBox {
   padding: 5px 5px;
   background-color: #f5f5f5;
 }
-.US-search{
+.US-search {
   width: 300px;
 }
 </style>

@@ -19,8 +19,18 @@
   <svg class="icon ico_size" aria-hidden="true">
     <use xlink:href="#icon-zhongguojiansheyinhang"></use>
   </svg>
+  <son1></son1>
+  <son1></son1>
 </div>
 </template>
+<script>
+import Son from './text.vue'
+export default {
+  components: {
+    Son1: Son
+  }
+}
+</script>
 <style lang="scss" scoped>
 .ico_size {
   font-size: 30px;

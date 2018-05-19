@@ -3,7 +3,7 @@
     <el-form ref="DOMlogin" :model="login" class="container" :rules="loginRules">
       <el-form-item>
         <div class="avatar">
-          <img src="../assets/老实人.jpg" alt="" class="loginImg">
+          <img src="../assets/avatar.jpg" alt="" class="loginImg">
         </div>
       </el-form-item>
       <el-form-item prop="name">
@@ -21,7 +21,7 @@
 </template>
 <script>
 // 引入登录请求接口
-import {eheckLogin} from '@/api'
+import { eheckLogin } from '@/api'
 export default {
   data () {
     return {
@@ -37,16 +37,19 @@ export default {
   },
   methods: {
     clickLogin (formName) {
-      this.$refs['DOMlogin'].validate((valid) => {
+      this.$refs['DOMlogin'].validate(valid => {
         if (valid) {
           // 调用登入验证的请求
-          eheckLogin({username: this.login.name, password: this.login.password}).then(result => {
+          eheckLogin({
+            username: this.login.name,
+            password: this.login.password
+          }).then(result => {
             if (result.meta.status === 200) {
               console.log(result)
               // 在登录成功的时候带上 token
               // 设置 localStorage 值
               localStorage.setItem('loginToken', result.data.token)
-              this.$router.push({name: 'home'})
+              this.$router.push({ name: 'home' })
               // 调用vuex 全局 设置 vuex 的全局变量 把用户名
               this.$store.commit('setUserName', result.data.username)
             } else {
@@ -90,7 +93,7 @@ export default {
       box-shadow: 0 1px 5px #ccc;
       overflow: hidden;
     }
-    .loginImg{
+    .loginImg {
       width: 100%;
     }
     .login-btn {

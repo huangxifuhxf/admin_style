@@ -26,7 +26,7 @@
         <!-- 头部 -->
         <el-header>
           <el-button type="primary" class="toggle-btn" @click="toggleCollapse()" icon="el-icon-menu"></el-button>
-          <div class="system-title">电商后台管理系统</div>
+          <div class="system-title">商品后台管理系统</div>
           <div>
             <span class="welcome">
               <!-- 您好，{{$store.getters.getLocalName}} -->
@@ -109,7 +109,7 @@ export default {
     }
     .logo {
       height: 60px;
-      background: url("../assets/logo.png");
+      background: url("../assets/logo.gif");
       background-size: cover;
       background-color: white;
     }

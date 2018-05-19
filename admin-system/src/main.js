@@ -23,7 +23,6 @@ import './IconFont/iconfont.js'
 
 // 时间过滤器
 import moment from 'moment/moment'
-
 // 全局chart
 Vue.component('chart', VueECharts)
 // 添加时间过滤器
@@ -51,7 +50,6 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
-
 Vue.config.productionTip = false
 Vue.use(VueQuillEditor)
 Vue.use(ElementUI)
